@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/shop": {
+      "name": "/shop",
+      "lambdaFunction": "shopping",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/payment-webhook": {
+      "name": "/payment-webhook",
+      "lambdaFunction": "shoppingwebhook",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

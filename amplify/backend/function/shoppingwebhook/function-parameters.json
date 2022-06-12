@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "auth": {
+      "shoppingd7f30e31": [
+        "create",
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "stripeSecretWebhook",
+      "environmentVariableName": "STRIPE_SECRET_WEBHOOK"
+    },
+    {
+      "cloudFormationParameterName": "stripeSecretKey",
+      "environmentVariableName": "STRIPE_SECRET_KEY"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+function OrderSuccessPage() {
+  const [orderId, setOrderId] = useState("");
+  useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+
+    if (query.get("session_id")) {
+      setOrderId(query.get("session_id"));
+    }
+  }, []);
+
+  return (
+    <div>
+      <h1>Order Success Page</h1>
+      <Link href={`/customer-session/${orderId}`}>
+        <a>View Order</a>
+      </Link>
+    </div>
+  );
+}
+
+export default OrderSuccessPage;

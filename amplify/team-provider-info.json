@@ -1,0 +1,33 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-shopping-dev-73121-authRole",
+      "UnauthRoleArn": "arn:aws:iam::288653100078:role/amplify-shopping-dev-73121-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::288653100078:role/amplify-shopping-dev-73121-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-shopping-dev-73121-deployment",
+      "UnauthRoleName": "amplify-shopping-dev-73121-unauthRole",
+      "StackName": "amplify-shopping-dev-73121",
+      "StackId": "arn:aws:cloudformation:us-east-1:288653100078:stack/amplify-shopping-dev-73121/9ed27e90-e8c1-11ec-9c84-12b3e3783029",
+      "AmplifyAppId": "d2s7duwh2clgsx"
+    },
+    "categories": {
+      "auth": {
+        "shoppingd7f30e31": {}
+      },
+      "function": {
+        "shopping": {
+          "stripeSecretKey": "sk_test_51JjDUvBrUQjl1iR6wdECwqRloYx65GtJhXZVXGcGm8PUqAuH3uVoynqqymNl6Wo8tnbCpgWiEDZ0cHmueXFgNuu500U4lPHAV5",
+          "deploymentBucketName": "amplify-shopping-dev-73121-deployment",
+          "s3Key": "amplify-builds/shopping-7455544b30716b4d3771-build.zip"
+        },
+        "shoppingwebhook": {
+          "stripeSecretWebhook": "whsec_brQpLRMDOT2RuYnvSFTh8vLTlPZ8rWQY",
+          "stripeSecretKey": "sk_test_51JjDUvBrUQjl1iR6wdECwqRloYx65GtJhXZVXGcGm8PUqAuH3uVoynqqymNl6Wo8tnbCpgWiEDZ0cHmueXFgNuu500U4lPHAV5",
+          "deploymentBucketName": "amplify-shopping-dev-73121-deployment",
+          "s3Key": "amplify-builds/shoppingwebhook-4373332f6e486b37634a-build.zip"
+        }
+      }
+    }
+  }
+}
