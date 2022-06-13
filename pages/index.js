@@ -1,28 +1,17 @@
-import { useEffect, useState } from "react";
-import getStripe from "../getStripe";
-import { API } from "aws-amplify";
+import { useEffect } from "react";
+import { useCart, useProducts } from "../hooks";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  const { products, handleCheckout } = useProducts();
+  const { cart, addToCart, removeFromCart } = useCart();
 
   useEffect(() => {
-    API.get("shopperapi", "/shop/products").then((productData) =>
-      setProducts(productData)
-    );
-  }, []);
-
-  const handleProductClick = async (priceId) => {
-    const stripe = await getStripe();
-    const data = await API.post("shopperapi", "/shop/checkout-sessions", {
-      body: { priceId, fulfillmentDate: new Date().toISOString() },
-    });
-
-    await stripe.redirectToCheckout({ sessionId: data.id });
-  };
+    console.log(cart);
+  }, [cart]);
 
   return (
     <main>
-      {products.map((product) => {
+      {(products ?? []).map((product) => {
         return (
           <article
             style={{
@@ -31,7 +20,6 @@ const Home = () => {
               display: "flex",
             }}
             key={product.priceId}
-            onClick={() => handleProductClick(product.priceId)}
           >
             <div>
               <img
@@ -39,6 +27,7 @@ const Home = () => {
                 alt={product.description}
                 width="300px"
                 height="300px"
+                onClick={() => addToCart(product)}
               />
             </div>
             <div>
@@ -51,6 +40,9 @@ const Home = () => {
               </h2>
               <p>{product.description}</p>
             </div>
+            <button onClick={() => removeFromCart(product.priceId)}>
+              delete
+            </button>
           </article>
         );
       })}

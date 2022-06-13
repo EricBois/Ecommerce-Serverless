@@ -19,13 +19,17 @@
         "shopping": {
           "stripeSecretKey": "sk_test_51JjDUvBrUQjl1iR6wdECwqRloYx65GtJhXZVXGcGm8PUqAuH3uVoynqqymNl6Wo8tnbCpgWiEDZ0cHmueXFgNuu500U4lPHAV5",
           "deploymentBucketName": "amplify-shopping-dev-73121-deployment",
-          "s3Key": "amplify-builds/shopping-7455544b30716b4d3771-build.zip"
+          "s3Key": "amplify-builds/shopping-4e4b45556b6d57667a77-build.zip"
         },
         "shoppingwebhook": {
           "stripeSecretWebhook": "whsec_brQpLRMDOT2RuYnvSFTh8vLTlPZ8rWQY",
           "stripeSecretKey": "sk_test_51JjDUvBrUQjl1iR6wdECwqRloYx65GtJhXZVXGcGm8PUqAuH3uVoynqqymNl6Wo8tnbCpgWiEDZ0cHmueXFgNuu500U4lPHAV5",
           "deploymentBucketName": "amplify-shopping-dev-73121-deployment",
           "s3Key": "amplify-builds/shoppingwebhook-4373332f6e486b37634a-build.zip"
+        },
+        "cartapi": {
+          "deploymentBucketName": "amplify-shopping-dev-73121-deployment",
+          "s3Key": "amplify-builds/cartapi-43653756655566377531-build.zip"
         }
       }
     }

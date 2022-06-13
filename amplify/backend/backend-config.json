@@ -63,6 +63,12 @@
           ]
         }
       ]
+    },
+    "cartapi": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": []
     }
   },
   "api": {
@@ -81,6 +87,14 @@
         {
           "category": "function",
           "resourceName": "shoppingwebhook",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "cartapi",
           "attributes": [
             "Name",
             "Arn"
