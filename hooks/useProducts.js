@@ -4,21 +4,23 @@ import { API } from "aws-amplify";
 
 export const useProducts = () => {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    API.get("shopperapi", "/shop/products").then((productData) =>
-      setProducts(productData)
-    );
+    setIsLoading(true);
+    API.get("shopperapi", "/shop/products")
+      .then((productData) => setProducts(productData.filter((p) => p.active)))
+      .then(() => setIsLoading(false));
   }, []);
 
-  const handleCheckout = async (priceId) => {
+  const handleCheckout = async (priceIds) => {
     const stripe = await getStripe();
     const data = await API.post("shopperapi", "/shop/checkout-sessions", {
-      body: { priceId, fulfillmentDate: new Date().toISOString() },
+      body: { priceIds },
     });
 
     await stripe.redirectToCheckout({ sessionId: data.id });
   };
 
-  return { products, handleCheckout };
+  return { products, handleCheckout, isLoading };
 };

@@ -1,52 +1,20 @@
-import { useEffect } from "react";
-import { useCart, useProducts } from "../hooks";
+import { useProducts } from "../hooks";
+import Product from "../components/Product";
+import Loading from "../components/Loading";
 
 const Home = () => {
-  const { products, handleCheckout } = useProducts();
-  const { cart, addToCart, removeFromCart } = useCart();
+  const { products, isLoading } = useProducts();
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
-
-  return (
-    <main>
+  return isLoading ? (
+    <div className="grid grid-cols-1 min-h-screen items-center justify-items-center">
+      <Loading />
+    </div>
+  ) : (
+    <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 mt-10 mx-5 gap-4">
       {(products ?? []).map((product) => {
-        return (
-          <article
-            style={{
-              border: "1px solid black",
-              margin: "20px",
-              display: "flex",
-            }}
-            key={product.priceId}
-          >
-            <div>
-              <img
-                src={product.image}
-                alt={product.description}
-                width="300px"
-                height="300px"
-                onClick={() => addToCart(product)}
-              />
-            </div>
-            <div>
-              <h2>{product.name}</h2>
-              <h2>
-                {new Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: "CAD",
-                }).format(product.price)}
-              </h2>
-              <p>{product.description}</p>
-            </div>
-            <button onClick={() => removeFromCart(product.priceId)}>
-              delete
-            </button>
-          </article>
-        );
+        return <Product key={product.priceId} className product={product} />;
       })}
-    </main>
+    </div>
   );
 };
 

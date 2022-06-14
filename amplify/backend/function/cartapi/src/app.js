@@ -36,6 +36,7 @@ app.post("/cart", async function (req, res) {
           description: req.body.description,
           name: req.body.name,
           image: req.body.image,
+          quantity: req.body.quantity,
         },
       })
       .promise();

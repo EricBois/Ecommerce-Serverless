@@ -32,6 +32,7 @@ app.get("/shop/products", async function (req, res) {
     const productData = productPriceData.data.map(
       ({ product, unit_amount, id }) => ({
         name: product.name,
+        active: product.active,
         description: product.description,
         price: unit_amount / 100,
         image: product.images[0],
@@ -54,18 +55,19 @@ app.post("/shop/checkout-sessions", async (req, res) => {
   try {
     // Create Checkout Sessions from body params.
     const session = await stripe.checkout.sessions.create({
-      line_items: [
-        {
-          price: req.body.priceId,
-          quantity: 1,
-        },
-      ],
+      line_items: req.body.priceIds,
+      // [
+      //   {
+      //     price: req.body.priceId,
+      //     quantity: 1,
+      //   },
+      // ],
       payment_method_types: ["card"],
       mode: "payment",
       success_url: `${req.headers.origin}/order/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/order/canceled`,
       metadata: {
-        fulfillmentDate: req.body.fulfillmentDate, //new Date().toISOString()
+        fulfillmentDate: new Date().toISOString(),
       },
       shipping_address_collection: {
         allowed_countries: ["US", "CA"],
