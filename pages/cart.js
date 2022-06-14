@@ -54,7 +54,7 @@ export default function Cart() {
                       )}
                     </span>
                     <button
-                      className="text-2xl rounded bg-orange-700 py-2 px-3 mt-2 text-white hover:bg-orange-800"
+                      className="text-2xl rounded bg-orange-700 py-2 px-3 mt-2 text-white hover:bg-orange-800 w-48"
                       onClick={() => removeFromCart(product.id)}
                     >
                       Remove Item
