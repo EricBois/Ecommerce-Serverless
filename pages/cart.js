@@ -8,15 +8,16 @@ export default function Cart() {
     price: item.id,
     quantity: item.quantity,
   }));
+  const subTotal = cart.reduce((accum, item) => accum + item.price, 0);
 
   return (
     <div className="grid grid-cols-1">
       <h1 className="text-4xl	text-center font-bold mt-5">Your Cart</h1>
-      <div className="grid grid-cols-2 bg-white min-h-screen m-5 rounded-lg p-10">
+      <div className="grid grid-cols-2 bg-white min-h-screen m-5 rounded-lg p-20">
         {cart.length > 0 ? (
           <div className="flex flex-col">
             {cart.map((product) => (
-              <div className="flex flex-col mt-5" key={product.id}>
+              <div className="flex flex-col mt-10" key={product.id}>
                 <div className="flex flex-row">
                   <img
                     className="w-48"
@@ -24,12 +25,8 @@ export default function Cart() {
                     alt="product image"
                   />
                   <div className="flex flex-col pl-5">
-                    <span className="px-2 place-self-center text-4xl">
-                      {product.name}
-                    </span>
-                    <span className="px-2 py-2 text-xl">
-                      {product.description}
-                    </span>
+                    <span className="font-bold text-4xl">{product.name}</span>
+                    <span className="py-2 text-xl">{product.description}</span>
                     <span>
                       Quantity:{" "}
                       <span className="font-bold pl-2">{product.quantity}</span>
@@ -43,13 +40,11 @@ export default function Cart() {
                         }).format(product.price)}
                       </span>
                     </span>
-                  </div>
-                  <div className="pl-10">
                     <button
-                      className="text-3xl rounded-full bg-orange-700 py-2 px-3 text-white hover:bg-orange-800"
+                      className="text-2xl rounded bg-orange-700 py-2 px-3 mt-2 text-white hover:bg-orange-800"
                       onClick={() => removeFromCart(product.id)}
                     >
-                      &#x2715;
+                      Remove Item
                     </button>
                   </div>
                 </div>
@@ -59,16 +54,30 @@ export default function Cart() {
         ) : (
           <span className="justify-self-end">Your cart is empty</span>
         )}
-        <div>
-          {cart.length > 0 && (
-            <button
-              className="text-3xl rounded bg-orange-700 py-2 px-3 text-white hover:bg-orange-800"
-              onClick={() => handleCheckout(productsTotal)}
-            >
-              Checkout
-            </button>
-          )}
-        </div>
+        {cart.length > 0 && (
+          <div className="bg-gray-200 rounded-lg h-2/3 flex flex-col ">
+            <div className="p-5 flex flex-col h-full">
+              <span className="text-center font-bold text-3xl mb-5">
+                {cart.length} Item&apos;s Added
+              </span>
+              <span className="text-gray-700 text-sm font-semibold">
+                Subtotal:{" "}
+                {new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "CAD",
+                }).format(subTotal)}
+              </span>
+            </div>
+            <div className="place-self-end w-full">
+              <button
+                className="text-3xl rounded bg-orange-700 h-24 py-2 px-3 w-full text-white hover:bg-orange-800"
+                onClick={() => handleCheckout(productsTotal)}
+              >
+                Proceed to Checkout
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
