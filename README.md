@@ -1,5 +1,18 @@
-## E-commerce powered by Next.js - Stripe - Amplify - Lambda
+## Serverless E-commerce
 
-- This is a work in progress \*
+**Tech Stack**
 
-# Live here <https://main.d2s7duwh2clgsx.amplifyapp.com/>
+- Next.js
+- Stripe Api
+- Aws Amplify / lambda / Dynamodb
+- TailwindCss
+
+**To Do**
+
+- Modify quantities in cart
+- finish Frontend design
+- save order after checkout
+- profile section
+- better name / logo ?
+
+**[Live version here](https://main.d2s7duwh2clgsx.amplifyapp.com)**
