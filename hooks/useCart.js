@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { API } from "aws-amplify";
+import cookieCutter from "cookie-cutter";
 
 const LocalStateContext = createContext();
 const LocalStateProvider = LocalStateContext.Provider;
@@ -10,26 +10,27 @@ function CartProvider({ children }) {
 
   useEffect(() => {
     setIsLoading(true);
-    API.get("shopperapi", "/cart")
-      .then((data) => setCart(data.Items))
-      .then(() => setIsLoading(false));
+    const cookie = cookieCutter.get("ericstorecookie");
+    if (cookie) {
+      setCart(JSON.parse(cookie));
+    }
+    setIsLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addToCart = async (product, quantity) => {
-    const updatedProduct = { ...product, quantity };
-    await API.post("shopperapi", "/cart", {
-      body: {
-        id: product.priceId,
-        ...updatedProduct,
-      },
-    }).then((data) => setCart([...cart, data]));
+    const updatedProduct = { ...product, quantity, id: product.priceId };
+    cookieCutter.set(
+      "ericstorecookie",
+      JSON.stringify([...cart, updatedProduct])
+    );
+    setCart([...cart, updatedProduct]);
   };
 
   const removeFromCart = async (productId) => {
-    await API.del("shopperapi", "/cart", {
-      body: { id: productId },
-    }).then((data) => setCart(cart.filter((p) => p.id !== data.Attributes.id)));
+    const updatedCart = cart.filter((p) => p.id !== productId);
+    cookieCutter.set("ericstorecookie", JSON.stringify(updatedCart));
+    setCart(updatedCart);
   };
 
   return (
