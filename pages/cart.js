@@ -1,5 +1,6 @@
 import React from "react";
 import { useCart, useProducts } from "../hooks";
+import { formatCurrency, safeRound } from "../system/utils";
 
 export default function Cart() {
   const { cart, removeFromCart } = useCart();
@@ -8,7 +9,13 @@ export default function Cart() {
     price: item.id,
     quantity: item.quantity,
   }));
-  const subTotal = cart.reduce((accum, item) => accum + item.price, 0);
+  const subTotal = cart.reduce(
+    (accum, item) => accum + item.price * item.quantity,
+    0
+  );
+  const shipping = 25;
+  const taxes = 0.05;
+  const grandTotal = safeRound(subTotal * (1 + taxes) + shipping);
 
   return (
     <div className="grid grid-cols-1">
@@ -34,11 +41,17 @@ export default function Cart() {
                     <span className="text-orange-700 font-bold">
                       Price:{" "}
                       <span className="text-black font-bold">
-                        {new Intl.NumberFormat("en-US", {
-                          style: "currency",
-                          currency: "CAD",
-                        }).format(product.price)}
+                        {formatCurrency(
+                          safeRound(product.price * product.quantity)
+                        )}
                       </span>
+                      {product.quantity > 1 && (
+                        <div>
+                          <span className="text-sm text-orange-900">
+                            ( {formatCurrency(product.price)} each )
+                          </span>
+                        </div>
+                      )}
                     </span>
                     <button
                       className="text-2xl rounded bg-orange-700 py-2 px-3 mt-2 text-white hover:bg-orange-800"
@@ -52,20 +65,36 @@ export default function Cart() {
             ))}
           </div>
         ) : (
-          <span className="justify-self-end">Your cart is empty</span>
+          <></>
         )}
         {cart.length > 0 && (
           <div className="bg-gray-200 rounded-lg h-2/3 flex flex-col ">
             <div className="p-5 flex flex-col h-full">
-              <span className="text-center font-bold text-3xl mb-5">
+              <span className="text-center font-bold text-3xl mb-10">
                 {cart.length} Item&apos;s Added
               </span>
-              <span className="text-gray-700 text-sm font-semibold">
-                Subtotal:{" "}
-                {new Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: "CAD",
-                }).format(subTotal)}
+              <div className="mt-5 flex place-items-center">
+                <span className="text-gray-700 text-xl font-semibold">
+                  Subtotal:
+                </span>
+                <span className="pl-4">{formatCurrency(subTotal)}</span>
+              </div>
+              <div className="flex place-items-center">
+                <span className="text-gray-700 text-xl font-semibold">
+                  Shipping & Handling:
+                </span>
+                <span className="pl-4">{formatCurrency(shipping)}</span>
+              </div>
+              <div className="flex place-items-center">
+                <span className="text-gray-700 text-xl font-semibold">
+                  taxes (5%) :
+                </span>
+                <span className="pl-4">
+                  {formatCurrency(safeRound(subTotal * taxes))}
+                </span>
+              </div>
+              <span className="text-3xl mt-20">
+                Grand Total: {formatCurrency(grandTotal)}{" "}
               </span>
             </div>
             <div className="place-self-end w-full">

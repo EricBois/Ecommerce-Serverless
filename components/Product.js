@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "../hooks";
+import { formatCurrency } from "../system/utils";
 
 export default function Product({ product }) {
   const { addToCart, cart } = useCart();
@@ -25,12 +26,7 @@ export default function Product({ product }) {
             {product.name}
           </h5>
         </a>
-        <h2>
-          {new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "CAD",
-          }).format(product.price)}
-        </h2>
+        <h2>{formatCurrency(product.price)}</h2>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {product.description}
         </p>
