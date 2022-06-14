@@ -20,7 +20,7 @@ export default function Cart() {
   return (
     <div className="grid grid-cols-1">
       <h1 className="text-4xl	text-center font-bold mt-5">Your Cart</h1>
-      <div className="grid grid-cols-2 bg-white min-h-screen m-5 rounded-lg p-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 bg-white min-h-screen m-5 rounded-lg p-20">
         {cart.length > 0 ? (
           <div className="flex flex-col">
             {cart.map((product) => (
@@ -68,7 +68,7 @@ export default function Cart() {
           <></>
         )}
         {cart.length > 0 && (
-          <div className="bg-gray-200 rounded-lg h-2/3 flex flex-col ">
+          <div className="bg-gray-200 rounded-lg h-2/3 flex flex-col mt-20 lg:mt-0 ">
             <div className="p-5 flex flex-col h-full">
               <span className="text-center font-bold text-3xl mb-10">
                 {cart.length} Item&apos;s Added
