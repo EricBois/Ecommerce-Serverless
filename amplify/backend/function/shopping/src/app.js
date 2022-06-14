@@ -56,12 +56,6 @@ app.post("/shop/checkout-sessions", async (req, res) => {
     // Create Checkout Sessions from body params.
     const session = await stripe.checkout.sessions.create({
       line_items: req.body.priceIds,
-      // [
-      //   {
-      //     price: req.body.priceId,
-      //     quantity: 1,
-      //   },
-      // ],
       payment_method_types: ["card"],
       mode: "payment",
       success_url: `${req.headers.origin}/order/success?session_id={CHECKOUT_SESSION_ID}`,

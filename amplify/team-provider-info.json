@@ -29,7 +29,7 @@
         },
         "cartapi": {
           "deploymentBucketName": "amplify-shopping-dev-73121-deployment",
-          "s3Key": "amplify-builds/cartapi-4a77675a6c387a54436a-build.zip"
+          "s3Key": "amplify-builds/cartapi-3962333932366d6d7942-build.zip"
         }
       }
     }

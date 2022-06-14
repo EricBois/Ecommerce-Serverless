@@ -15,11 +15,12 @@ function CartProvider({ children }) {
       .then(() => setIsLoading(false));
   }, []);
 
-  const addToCart = async (product) => {
+  const addToCart = async (product, quantity) => {
+    const updatedProduct = { ...product, quantity };
     await API.post("shopperapi", "/cart", {
       body: {
         id: product.priceId,
-        ...product,
+        ...updatedProduct,
       },
     }).then((data) => setCart([...cart, data]));
   };
