@@ -20,7 +20,7 @@ export default function Cart() {
   return (
     <div className="grid grid-cols-1">
       <h1 className="text-4xl	text-center font-bold mt-5">Your Cart</h1>
-      <div className="grid grid-cols-1 lg:grid-cols-2 bg-white min-h-screen m-5 rounded-lg p-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 bg-white min-h-screen m-1 lg:m-5 rounded-lg lg:p-20">
         {cart.length > 0 ? (
           <div className="flex flex-col">
             {cart.map((product) => (
