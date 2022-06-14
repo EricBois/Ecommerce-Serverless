@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import Cart from "../assets/cart.png";
 import { useCart } from "../hooks";
 
@@ -13,7 +13,7 @@ export default function Header() {
         <div className="flex items-center space-x-3 lg:pr-16 pr-6">
           <Link href="/">
             <h1 className="font-normal text-2xl leading-6 text-white cursor-pointer">
-              Eric's Store
+              Eric&apos;s Store
             </h1>
           </Link>
         </div>
@@ -26,6 +26,7 @@ export default function Header() {
                 height="50"
                 className=" cursor-pointer"
                 src={Cart}
+                alt="Cart image"
               />
 
               {cart.length > 0 && (

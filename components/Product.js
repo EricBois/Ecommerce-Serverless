@@ -8,11 +8,16 @@ export default function Product({ product }) {
 
   useEffect(() => {
     setIsDisabled(Boolean(cart.find((p) => p.id === product.priceId)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart]);
   return (
     <div className="max-w-sm bg-white rounded-lg border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
-        <img className="rounded-t-lg h-72" src={product.image} alt="" />
+        <img
+          className="rounded-t-lg h-72"
+          src={product.image}
+          alt="product image"
+        />
       </a>
       <div className="p-5 ">
         <a href="#">

@@ -13,6 +13,7 @@ function CartProvider({ children }) {
     API.get("shopperapi", "/cart")
       .then((data) => setCart(data.Items))
       .then(() => setIsLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addToCart = async (product, quantity) => {

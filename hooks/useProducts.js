@@ -11,6 +11,7 @@ export const useProducts = () => {
     API.get("shopperapi", "/shop/products")
       .then((productData) => setProducts(productData.filter((p) => p.active)))
       .then(() => setIsLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCheckout = async (priceIds) => {

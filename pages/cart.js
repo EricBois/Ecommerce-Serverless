@@ -1,7 +1,7 @@
 import React from "react";
 import { useCart, useProducts } from "../hooks";
 
-export default function cart() {
+export default function Cart() {
   const { cart, removeFromCart } = useCart();
   const { handleCheckout } = useProducts();
   const productsTotal = cart.map((item) => ({
@@ -17,7 +17,7 @@ export default function cart() {
           {cart.map((product) => (
             <div className="flex flex-col mt-5" key={product.id}>
               <div className="flex flex-row">
-                <img className="w-48" src={product.image} />
+                <img className="w-48" src={product.image} alt="product image" />
                 <div className="flex flex-col pl-5">
                   <span className="px-2 place-self-center text-4xl">
                     {product.name}

@@ -10,6 +10,7 @@ function OrderCancelPage() {
       console.log("Order canceled.");
     }
     router.push("/cart");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return <div>Order Cancel Page</div>;
 }

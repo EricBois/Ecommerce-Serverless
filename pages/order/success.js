@@ -9,6 +9,7 @@ function OrderSuccessPage() {
     if (query.get("session_id")) {
       setOrderId(query.get("session_id"));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
