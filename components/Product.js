@@ -12,7 +12,7 @@ export default function Product({ product }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart]);
   return (
-    <div className="max-w-sm bg-white rounded-lg border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-sm bg-white rounded-lg border-gray-200 shadow-md">
       <a href="#">
         <img
           className="rounded-t-lg h-72"
@@ -22,14 +22,12 @@ export default function Product({ product }) {
       </a>
       <div className="p-5 ">
         <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
             {product.name}
           </h5>
         </a>
         <h2>{formatCurrency(product.price)}</h2>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          {product.description}
-        </p>
+        <p className="mb-3 font-normal text-gray-700">{product.description}</p>
         <div className="">
           <label className="w-full text-gray-700 text-sm font-semibold">
             Quantity
@@ -60,7 +58,7 @@ export default function Product({ product }) {
             onClick={() => {
               addToCart(product, quantity);
             }}
-            className="disabled:bg-orange-900 font-bold w-full items-center py-2 px-3 text-sm text-center text-white bg-orange-700 rounded-lg hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="disabled:bg-orange-900 font-bold w-full items-center py-2 px-3 text-sm text-center text-white bg-orange-700 rounded-lg hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
           >
             {isDisabled ? "Added To Cart" : "Add To Cart"}
           </button>
