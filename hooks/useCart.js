@@ -27,6 +27,15 @@ function CartProvider({ children }) {
     setCart([...cart, updatedProduct]);
   };
 
+  const updateQuantity = async (productId, value) => {
+    const updatedProduct = cart.map((item) =>
+      item.priceId === productId ? { ...item, quantity: value } : item
+    );
+    console.log(updatedProduct);
+    cookieCutter.set("ericstorecookie", JSON.stringify([...updatedProduct]));
+    setCart([...updatedProduct]);
+  };
+
   const removeFromCart = async (productId) => {
     const updatedCart = cart.filter((p) => p.id !== productId);
     cookieCutter.set("ericstorecookie", JSON.stringify(updatedCart));
@@ -40,6 +49,7 @@ function CartProvider({ children }) {
         addToCart,
         removeFromCart,
         isLoading,
+        updateQuantity,
       }}
     >
       {children}
