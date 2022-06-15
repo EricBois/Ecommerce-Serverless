@@ -31,7 +31,6 @@ function CartProvider({ children }) {
     const updatedProduct = cart.map((item) =>
       item.priceId === productId ? { ...item, quantity: value } : item
     );
-    console.log(updatedProduct);
     cookieCutter.set("ericstorecookie", JSON.stringify([...updatedProduct]));
     setCart([...updatedProduct]);
   };
