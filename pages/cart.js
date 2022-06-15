@@ -1,8 +1,10 @@
 import React from "react";
 import { useCart, useProducts } from "../hooks";
 import { formatCurrency, safeRound } from "../system/utils";
+import { useRouter } from "next/router";
 
 export default function Cart() {
+  const { push } = useRouter();
   const { cart, removeFromCart } = useCart();
   const { handleCheckout } = useProducts();
   const productsTotal = cart.map((item) => ({
@@ -19,20 +21,28 @@ export default function Cart() {
 
   return (
     <div className="grid grid-cols-1">
+      <button
+        className="text-4xl rounded bg-orange-700 m-2 text-white hover:bg-orange-800 w-24"
+        onClick={() => push("/")}
+      >
+        &#x2190;
+      </button>
       <h1 className="text-4xl	text-center font-bold mt-5">Your Cart</h1>
-      <div className="grid grid-cols-1 lg:grid-cols-2 bg-white min-h-screen m-1 lg:m-5 rounded-lg lg:p-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 bg-white min-h-screen m-1 lg:m-5 rounded-lg sm:p-20">
         {cart.length > 0 ? (
           <div className="flex flex-col">
             {cart.map((product) => (
               <div className="flex flex-col mt-10" key={product.id}>
-                <div className="flex flex-row">
+                <div className="flex place-items-center flex-col sm:flex-row">
                   <img
                     className="w-48"
                     src={product.image}
                     alt="product image"
                   />
                   <div className="flex flex-col pl-5">
-                    <span className="font-bold text-4xl">{product.name}</span>
+                    <span className="font-bold text-xl sm:text-4xl">
+                      {product.name}
+                    </span>
                     <span className="py-2 text-xl">{product.description}</span>
                     <span>
                       Quantity:{" "}
@@ -54,7 +64,7 @@ export default function Cart() {
                       )}
                     </span>
                     <button
-                      className="text-2xl rounded bg-orange-700 py-2 px-3 mt-2 text-white hover:bg-orange-800 w-48"
+                      className="text-xl sm:text-2xl rounded bg-orange-700 py-2 px-3 mt-2 text-white hover:bg-orange-800 w-48"
                       onClick={() => removeFromCart(product.id)}
                     >
                       Remove Item
