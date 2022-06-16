@@ -28,7 +28,7 @@ export default function Product({ product, isCart }) {
             <label className="w-full text-gray-700 text-sm font-semibold">
               Quantity
             </label>
-            <div className="flex flex-row h-8 w-36 rounded-lg relative bg-transparent my-2">
+            <div className="flex flex-row h-8 w-24 rounded-lg relative bg-transparent my-2">
               <button
                 data-action="decrement"
                 onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
@@ -62,7 +62,7 @@ export default function Product({ product, isCart }) {
             )}
           </span>
           <button
-            className="text-xl sm:text-2xl rounded bg-orange-700 py-2 px-3 mt-2 text-white hover:bg-orange-800 w-48"
+            className="text-sm rounded bg-orange-700 py-2 px-3 mt-2 text-white hover:bg-orange-800 w-36"
             onClick={() => removeFromCart(product.id)}
           >
             Remove Item
