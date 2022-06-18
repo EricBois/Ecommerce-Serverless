@@ -37,6 +37,7 @@ app.get("/shop/products", async function (req, res) {
         price: unit_amount / 100,
         image: product.images[0],
         priceId: id,
+        metadata: product.metadata,
       })
     );
 

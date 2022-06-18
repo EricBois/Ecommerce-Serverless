@@ -8,7 +8,7 @@ export default function Header() {
   const { cart } = useCart();
 
   return (
-    <div className="bg-[#242F9B] shadow-lg py-5 px-7">
+    <div className="bg-[#263238] shadow-lg py-5 px-7">
       <nav className="flex justify-between">
         <div className="flex items-center space-x-3 lg:pr-16 pr-6">
           <Link href="/">

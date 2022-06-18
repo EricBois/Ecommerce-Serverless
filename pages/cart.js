@@ -22,7 +22,7 @@ export default function Cart() {
   return (
     <div className="grid grid-cols-1">
       <Link href="/">
-        <button className="text-4xl text-center rounded bg-orange-700 m-2 text-white hover:bg-orange-800 w-24">
+        <button className="text-3xl text-center rounded bg-orange-700 m-2 text-white hover:bg-orange-800 w-24">
           &#8617;
         </button>
       </Link>

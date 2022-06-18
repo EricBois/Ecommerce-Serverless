@@ -4,7 +4,9 @@ import { API } from "aws-amplify";
 
 export const useProducts = () => {
   const [products, setProducts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [filterBy, setFilterBy] = useState();
 
   useEffect(() => {
     setIsLoading(true);
@@ -13,6 +15,12 @@ export const useProducts = () => {
       .then(() => setIsLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    setFiltered(
+      products.filter((p) => p.metadata.category === filterBy && p.active)
+    );
+  }, [filterBy]);
 
   const handleCheckout = async (priceIds) => {
     const stripe = await getStripe();
@@ -23,5 +31,10 @@ export const useProducts = () => {
     await stripe.redirectToCheckout({ sessionId: data.id });
   };
 
-  return { products, handleCheckout, isLoading };
+  return {
+    products: filtered.length > 0 ? filtered : products,
+    handleCheckout,
+    isLoading,
+    setFilterBy,
+  };
 };
