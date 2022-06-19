@@ -23,12 +23,15 @@ export const useProducts = () => {
   }, [filterBy]);
 
   const handleCheckout = async (priceIds) => {
+    setIsLoading(true);
     const stripe = await getStripe();
     const data = await API.post("shopperapi", "/shop/checkout-sessions", {
       body: { priceIds },
     });
 
-    await stripe.redirectToCheckout({ sessionId: data.id });
+    await stripe.redirectToCheckout({ sessionId: data.id }).then(() => {
+      setIsLoading(false);
+    });
   };
 
   return {

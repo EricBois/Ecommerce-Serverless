@@ -3,10 +3,10 @@ import React from "react";
 import Product from "../components/Product";
 import { useCart, useProducts } from "../hooks";
 import { formatCurrency, safeRound } from "../system/utils";
-
+import Loading from "../components/Loading";
 export default function Cart() {
   const { cart } = useCart();
-  const { handleCheckout } = useProducts();
+  const { handleCheckout, isLoading } = useProducts();
   const productsTotal = cart.map((item) => ({
     price: item.id,
     quantity: item.quantity,
@@ -72,7 +72,7 @@ export default function Cart() {
                 className="text-3xl rounded bg-orange-700 h-24 py-2 px-3 w-full text-white hover:bg-orange-800"
                 onClick={() => handleCheckout(productsTotal)}
               >
-                Proceed to Checkout
+                {isLoading ? <Loading /> : "Proceed to Checkout"}
               </button>
             </div>
           </div>

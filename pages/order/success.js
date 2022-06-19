@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useProducts } from "../../hooks";
+
 function OrderSuccessPage() {
   const [orderId, setOrderId] = useState("");
+
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
