@@ -1,16 +1,18 @@
 import React from "react";
 import { formatCurrency } from "system/utils";
 import Controls from "./Controls";
+import Link from "next/link";
 
 export default function Product({ product }) {
   return (
     <div className="max-w-sm bg-white rounded-lg border-gray-200 shadow-md">
-      <img
-        className="rounded-t-lg h-72"
-        src={product.image}
-        alt="product image"
-      />
-
+      <Link href={`/products/${product.name}`}>
+        <img
+          className="rounded-t-lg h-72"
+          src={product.image}
+          alt="product image"
+        />
+      </Link>
       <div className="p-5 ">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
           {product.name}
