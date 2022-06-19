@@ -57,7 +57,7 @@ function CartProvider({ children }) {
 }
 
 function useCart() {
-  const all = useContext(LocalStateContext);
-  return all;
+  return useContext(LocalStateContext);
 }
+
 export { CartProvider, useCart };

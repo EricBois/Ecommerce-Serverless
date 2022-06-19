@@ -29,7 +29,7 @@ export const useProducts = () => {
       body: { priceIds },
     });
 
-    await stripe.redirectToCheckout({ sessionId: data.id }).then(() => {
+    await stripe.redirectToCheckout({ sessionId: data.id }).finally(() => {
       setIsLoading(false);
     });
   };
