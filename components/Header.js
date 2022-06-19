@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Cart from "../assets/cart.png";
-import { useCart } from "../hooks";
+import Cart from "assets/cart.png";
+import { useCart } from "hooks";
 
 export default function Header() {
   const { cart } = useCart();

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useProducts } from "../../hooks";
 
 function OrderSuccessPage() {
   const [orderId, setOrderId] = useState("");

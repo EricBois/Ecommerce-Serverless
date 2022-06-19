@@ -1,9 +1,8 @@
 import Link from "next/link";
 import React from "react";
-import Product from "../components/Product";
-import { useCart, useProducts } from "../hooks";
-import { formatCurrency, safeRound } from "../system/utils";
-import Loading from "../components/Loading";
+import { ListProducts, Loading } from "components";
+import { useCart, useProducts } from "hooks";
+import { formatCurrency, safeRound } from "system/utils";
 export default function Cart() {
   const { cart } = useCart();
   const { handleCheckout, isLoading } = useProducts();
@@ -31,7 +30,7 @@ export default function Cart() {
         {cart.length > 0 ? (
           <div className="flex flex-col">
             {cart.map((product) => (
-              <Product key={product.id} product={product} isCart />
+              <ListProducts key={product.id} product={product} isCart />
             ))}
           </div>
         ) : (

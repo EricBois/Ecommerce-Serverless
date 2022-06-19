@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getStripe from "../getStripe";
+import getStripe from "getStripe";
 import { API } from "aws-amplify";
 
 export const useProducts = () => {
