@@ -11,7 +11,7 @@ const Home = () => {
   ) : (
     <>
       <Menu setFilterBy={setFilterBy} />
-      <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 mt-10 mx-5 gap-4">
+      <div className="justify-items-center grid grid-cols-1 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 mt-10 mx-5 gap-2">
         {(products ?? []).map((product) => {
           return (
             <ListProducts key={product.priceId} className product={product} />

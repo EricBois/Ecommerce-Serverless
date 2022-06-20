@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Product({ product }) {
   return (
     <Link href={`/product/${product.name}`}>
-      <div className="max-w-xs bg-white rounded-lg border-gray-200 shadow-md cursor-pointer">
+      <div className="w-64 bg-white rounded-lg border-gray-200 shadow-md cursor-pointer">
         <Image
           className="rounded-t-lg"
           height="350"
@@ -16,7 +16,7 @@ export default function Product({ product }) {
         />
 
         <div className="p-5 ">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900">
             {product.name}
           </h5>
 
