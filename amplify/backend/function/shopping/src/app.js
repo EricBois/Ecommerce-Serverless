@@ -58,6 +58,17 @@ app.post("/shop/checkout-sessions", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: req.body.priceIds,
       payment_method_types: ["card"],
+      // automatic_tax: { // need to setup dashboard to enable this
+      //   enabled: true,
+      // },
+      shipping_address_collection: {
+        allowed_countries: ["US", "CA"],
+      },
+      shipping_options: [
+        {
+          shipping_rate: "shr_1LCn0iBrUQjl1iR6LEvJeXHK",
+        },
+      ],
       mode: "payment",
       success_url: `${req.headers.origin}/order/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/order/canceled`,

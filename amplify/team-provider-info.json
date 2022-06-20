@@ -19,7 +19,7 @@
         "shopping": {
           "stripeSecretKey": "sk_test_51JjDUvBrUQjl1iR6wdECwqRloYx65GtJhXZVXGcGm8PUqAuH3uVoynqqymNl6Wo8tnbCpgWiEDZ0cHmueXFgNuu500U4lPHAV5",
           "deploymentBucketName": "amplify-shopping-dev-73121-deployment",
-          "s3Key": "amplify-builds/shopping-33586c735a62636e6677-build.zip"
+          "s3Key": "amplify-builds/shopping-70794d35732b366d656f-build.zip"
         },
         "shoppingwebhook": {
           "stripeSecretWebhook": "whsec_brQpLRMDOT2RuYnvSFTh8vLTlPZ8rWQY",
