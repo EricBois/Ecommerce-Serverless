@@ -9,13 +9,17 @@ export default function CartSummary({ cart }) {
     (accum, item) => accum + item.price * item.quantity,
     0
   );
-  const shipping = 25;
+  const isDisabled = Boolean(!cart.length > 0);
+  const shipping = isDisabled ? "N/A" : formatCurrency(25);
   const taxes = 0.05;
-  const grandTotal = safeRound(subTotal * (1 + taxes) + shipping);
+  const grandTotal = isDisabled
+    ? 0
+    : safeRound(subTotal * (1 + taxes) + shipping);
   const productsTotal = cart.map((item) => ({
     price: item.id,
     quantity: item.quantity,
   }));
+
   return (
     <div className="bg-gray-200 rounded-lg h-2/3 flex flex-col mt-20 lg:mt-0 ">
       <div className="p-5 flex flex-col h-full">
@@ -30,7 +34,7 @@ export default function CartSummary({ cart }) {
           <span className="text-gray-700 text-xl font-semibold">
             Shipping & Handling:
           </span>
-          <span className="pl-4">{formatCurrency(shipping)}</span>
+          <span className="pl-4">{shipping}</span>
         </div>
         <div className="flex place-items-center">
           <span className="text-gray-700 text-xl font-semibold">
@@ -46,10 +50,17 @@ export default function CartSummary({ cart }) {
       </div>
       <div className="place-self-end w-full">
         <button
-          className="text-3xl rounded bg-orange-700 h-24 py-2 px-3 w-full text-white hover:bg-orange-800"
+          disabled={isDisabled}
+          className="text-3xl rounded disabled:bg-slate-500 bg-orange-700 h-24 py-2 px-3 w-full text-white hover:bg-orange-800"
           onClick={() => handleCheckout(productsTotal)}
         >
-          {isLoading ? <Loading /> : "Proceed to Checkout"}
+          {isLoading ? (
+            <Loading />
+          ) : isDisabled ? (
+            "No items in cart"
+          ) : (
+            "Proceed to Checkout"
+          )}
         </button>
       </div>
     </div>

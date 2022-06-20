@@ -22,9 +22,13 @@ export default function Cart() {
             ))}
           </div>
         ) : (
-          <></>
+          <div>
+            <h2 className="text-center text-xl font-bold">
+              Your Cart Is Empty{" "}
+            </h2>
+          </div>
         )}
-        {cart.length > 0 && <CartSummary cart={cart} />}
+        <CartSummary cart={cart} />
       </div>
     </div>
   );
