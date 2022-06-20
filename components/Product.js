@@ -6,11 +6,11 @@ import Image from "next/image";
 export default function Product({ product }) {
   return (
     <Link href={`/product/${product.name}`}>
-      <div className="max-w-sm bg-white rounded-lg border-gray-200 shadow-md cursor-pointer">
+      <div className="max-w-xs bg-white rounded-lg border-gray-200 shadow-md cursor-pointer">
         <Image
           className="rounded-t-lg"
-          height="500"
-          width="500"
+          height="350"
+          width="350"
           src={product.image}
           alt="product image"
         />
