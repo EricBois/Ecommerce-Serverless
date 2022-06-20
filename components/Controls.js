@@ -26,7 +26,7 @@ export default function Controls({ product, isCart }) {
         </label>
         <div
           className={`flex flex-row h-8 ${
-            isCart ? "w-24" : "w-full"
+            isCart ? "w-24" : "w-36"
           } rounded-lg relative bg-transparent my-2`}
         >
           <button
@@ -78,7 +78,7 @@ export default function Controls({ product, isCart }) {
             onClick={() => {
               addToCart(product, quantity);
             }}
-            className="disabled:bg-orange-900 font-bold w-full items-center py-2 px-3 text-sm text-center text-white bg-orange-700 rounded-lg hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+            className="disabled:bg-orange-900 font-bold h-24 w-48 mt-5 items-center py-2 px-3 text-lg text-center text-white bg-orange-700 rounded-lg hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
           >
             {isDisabled ? "Added To Cart" : "Add To Cart"}
           </button>
