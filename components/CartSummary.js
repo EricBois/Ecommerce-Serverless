@@ -10,11 +10,11 @@ export default function CartSummary({ cart }) {
     0
   );
   const isDisabled = Boolean(!cart.length > 0);
-  const shipping = isDisabled ? "N/A" : formatCurrency(25);
+  const shipping = isDisabled ? "N/A" : 25;
   const taxes = 0.05;
   const grandTotal = isDisabled
     ? 0
-    : safeRound(subTotal * (1 + taxes) + (Number(shipping) ?? 0));
+    : safeRound(subTotal * (1 + taxes) + shipping);
   const productsTotal = cart.map((item) => ({
     price: item.id,
     quantity: item.quantity,
@@ -34,7 +34,7 @@ export default function CartSummary({ cart }) {
           <span className="text-gray-700 text-xl font-semibold">
             Shipping & Handling:
           </span>
-          <span className="pl-4">{shipping}</span>
+          <span className="pl-4">{formatCurrency(shipping)}</span>
         </div>
         <div className="flex place-items-center">
           <span className="text-gray-700 text-xl font-semibold">
