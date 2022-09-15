@@ -14,7 +14,7 @@ export default function CartSummary({ cart }) {
   const taxes = 0.05;
   const grandTotal = isDisabled
     ? 0
-    : safeRound(subTotal * (1 + taxes) + shipping);
+    : safeRound(subTotal * (1 + taxes) + (Number(shipping) ?? 0));
   const productsTotal = cart.map((item) => ({
     price: item.id,
     quantity: item.quantity,
